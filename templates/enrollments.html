@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Enrollments</h2>
+
+<form method="POST" action="/enrollments" class="row g-3 mb-4">
+  <div class="col-md-4">
+    <select name="student_id" class="form-select" required>
+      <option value="">Select Student</option>
+      {% for s in students %}
+      <option value="{{ s.student_id }}">{{ s.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-4">
+    <select name="course_id" class="form-select" required>
+      <option value="">Select Course</option>
+      {% for c in courses %}
+      <option value="{{ c.course_id }}">{{ c.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-3">
+    <input type="text" name="grade" class="form-control" placeholder="Grade (optional)">
+  </div>
+  <div class="col-md-1 text-end">
+    <button type="submit" class="btn btn-success">Enroll</button>
+  </div>
+</form>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr><th>ID</th><th>Student</th><th>Course</th><th>Grade</th></tr>
+  </thead>
+  <tbody>
+    {% for e in enrollments %}
+    <tr>
+      <td>{{ e.enrollment_id }}</td>
+      <td>{{ e.student_name }}</td>
+      <td>{{ e.course_title }}</td>
+      <td>{{ e.grade or "N/A" }}</td>
+      <td>
+        <a href="#" class="btn btn-danger btn-sm"
+   data-bs-toggle="modal"
+   data-bs-target="#confirmDeleteModal"
+   data-delete-url="/delete_enrollment/{{ e.enrollment_id }}"
+   title="Delete Enrollment">
+   🗑 Delete
+</a>
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

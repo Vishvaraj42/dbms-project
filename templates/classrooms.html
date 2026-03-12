@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Classrooms</h2>
+
+<form method="POST" action="/classrooms" class="row g-3 mb-4">
+  <div class="col-md-3">
+    <input type="text" name="room_number" class="form-control" placeholder="Room Number" required>
+  </div>
+  <div class="col-md-4">
+    <select name="dept_id" class="form-select" required>
+      <option value="">Select Department</option>
+      {% for d in departments %}
+      <option value="{{ d.dept_id }}">{{ d.dept_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-4">
+    <select name="building" class="form-select">
+      <option value="">Select Building</option>
+      <option>Block - A</option>
+      <option>Block - B</option>
+      <option>Block - C</option>
+      <option>Block - D</option>
+      <option>Block - E</option>
+      <option>Block - F</option>
+    </select>
+  </div>
+  <div class="col-md-1 text-end">
+    <button type="submit" class="btn btn-success">Add Classroom</button>
+  </div>
+</form>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr><th>ID</th><th>Room</th><th>Department</th><th>Building</th></tr>
+  </thead>
+  <tbody>
+    {% for c in classrooms %}
+    <tr>
+      <td>{{ c.classroom_id }}</td>
+      <td>{{ c.room_number }}</td>
+      <td>{{ c.dept_name or "N/A" }}</td>
+      <td>{{ c.building or "N/A" }}</td>
+      <td>
+        <a href="#" class="btn btn-danger btn-sm"
+   data-bs-toggle="modal"
+   data-bs-target="#confirmDeleteModal"
+   data-delete-url="/delete_classroom/{{ c.classroom_id }}"
+   title="Delete Classroom">
+   🗑 Delete
+</a>
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

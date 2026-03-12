@@ -1,0 +1,3 @@
+course_id,course_title,prereq_id,prereq_title
+,Data Structures,,Intro to Programming
+,Linear Algebra,,Calculus

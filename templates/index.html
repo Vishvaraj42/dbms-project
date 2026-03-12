@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center mt-5">
+  <h1 class="fw-bold mb-3">Welcome to the University Course Management System</h1>
+  <p class="text-muted mb-5">
+    Manage students, courses, faculty, departments, attendance, and more — all in one place.
+  </p>
+</div>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+
+    <!-- Students -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Students</h4>
+          <p class="text-muted small">View or add student records</p>
+          <a href="/students" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Courses -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Courses</h4>
+          <p class="text-muted small">Manage all course details</p>
+          <a href="/courses" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prerequisites -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Prerequisites</h4>
+          <p class="text-muted small">Manage course prerequisites</p>
+          <a href="/prerequisites" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faculty -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Faculty</h4>
+          <p class="text-muted small">View or add faculty members</p>
+          <a href="/faculty" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Departments -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Departments</h4>
+          <p class="text-muted small">List and manage departments</p>
+          <a href="/departments" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classrooms -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Classrooms</h4>
+          <p class="text-muted small">Room allocations and capacities</p>
+          <a href="/classrooms" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enrollments -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Enrollments</h4>
+          <p class="text-muted small">Student course registrations</p>
+          <a href="/enrollments" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attendance -->
+    <div class="col">
+      <div class="card text-center shadow-sm h-100 border-0">
+        <div class="card-body">
+          <h4 class="fw-semibold">Attendance</h4>
+          <p class="text-muted small">Track attendance records</p>
+          <a href="/attendance" class="btn btn-primary w-100">Go</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="text-center mt-5 mb-3 text-muted">
+  University Course Management System © 2025
+</footer>
+{% endblock %}

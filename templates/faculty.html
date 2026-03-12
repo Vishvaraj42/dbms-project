@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Faculty</h2>
+
+<form method="POST" action="/faculty" class="row g-3 mb-4">
+  <div class="col-md-3">
+    <input type="text" name="name" class="form-control" placeholder="Faculty Name" required>
+  </div>
+  <div class="col-md-3">
+    <input type="email" name="email" class="form-control" placeholder="Email (optional)">
+  </div>
+  <div class="col-md-3">
+    <select name="dept_id" class="form-select" required>
+      <option value="">Select Department</option>
+      {% for d in departments %}
+      <option value="{{ d.dept_id }}">{{ d.dept_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-2 text-end">
+    <button type="submit" class="btn btn-success">Add Faculty</button>
+  </div>
+</form>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th></tr>
+  </thead>
+  <tbody>
+    {% for f in faculty %}
+    <tr>
+      <td>{{ f.faculty_id }}</td>
+      <td>{{ f.name }}</td>
+      <td>{{ f.email or "N/A" }}</td>
+      <td>{{ f.dept_name or "N/A" }}</td>
+      <td>
+        <a href="#" class="btn btn-danger btn-sm"
+   data-bs-toggle="modal"
+   data-bs-target="#confirmDeleteModal"
+   data-delete-url="/delete_faculty/{{ f.faculty_id }}"
+   title="Delete Faculty">
+   🗑 Delete
+</a>
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
